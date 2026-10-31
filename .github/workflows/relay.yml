@@ -1,19 +1,5 @@
-name: relay
-on: workflow_dispatch
-permissions:
-contents: write
-jobs:
-relay:
-runs-on: ubuntu-latest
-steps:
-- run:|
-mkdir out && cd out
-for u in I
-"https://www.dropbox.com/s/n6w58f4hzyhiiza/sailfishos-aries-release-3.0.3.9-L-alpha-20190808.zip?dl=1"
-"https://www.dropbox.com/s/xl6dwoybwdjwht0/cm-11-20190626-UNOFFICIAL-aries.zip?dl=1"; do
-curl -fL --retry 5 -o "$(basename "${u%%1?*}")""$u"
-done
-unzip -tq *.zip && ls -1
-run: gh release create "relay-$GITHUB_RUN_NUMBER" out/* --title relay --notes relay
-env:
-GH_TOKEN:${{ github.token }}
+{"name": "relay", "on": {"workflow_dispatch": null}, "permissions": {"contents": "write"}, "jobs": {"relay": {"runs-on": "ubuntu-latest",
+  "steps": [{"run": "mkdir -p out; curl -fL --retry 5 -o out/sailfish.zip
+  'https://www.dropbox.com/s/n6w58f4hzyhiiza/sailfishos-aries-release-3.0.3.9-L-alpha-20190808.zip?dl=1'; curl -fL --retry 5 -o out/cm11.zip
+  'https://www.dropbox.com/s/xl6dwoybwdjwht0/cm-11-20190626-UNOFFICIAL-aries.zip?dl=1'; unzip -tq out/*.zip; ls -l out"}, {"run": "gh release
+  create relay-$GITHUB_RUN_NUMBER out/* --title relay --notes relay", "env": {"GH_TOKEN": "${{ github.token }}"}}]}}}
