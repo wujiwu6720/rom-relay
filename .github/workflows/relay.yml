@@ -4,4 +4,3 @@
   'https://www.dropbox.com/s/xl6dwoybwdjwht0/cm-11-20190626-UNOFFICIAL-aries.zip?dl=1'; unzip -tq out/sailfish.zip && unzip -tq out/cm11.zip;
   ls -l out"}, {"run": "gh release create relay-$GITHUB_RUN_NUMBER out/* --title relay --notes relay", "env": {"GH_TOKEN": "${{ github.token
   }}"}}]}}}
-  
